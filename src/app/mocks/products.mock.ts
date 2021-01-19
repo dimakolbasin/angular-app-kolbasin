@@ -1,0 +1,40 @@
+import {Product} from '../model/product.model';
+
+export const products: Product[] = [
+  {
+    id: 0,
+    name: 'IPHONE XR 512GB',
+    price: 1111,
+    count: 0
+  },
+  {
+    id: 1,
+    name: 'IPHONE XR 256GB',
+    price: 1234,
+    count: 0
+  },
+  {
+    id: 2,
+    name: 'IPHONE XR 128GB',
+    price: 900,
+    count: 0
+  },
+  {
+    id: 3,
+    name: 'IPHONE XR 64GB',
+    price: 799,
+    count: 0
+  },
+  {
+    id: 4,
+    name: 'IPHONE XR 64GB DUAL SIM',
+    price: 1000,
+    count: 0
+  },
+  {
+    id: 5,
+    name: 'IPHONE XR 128GB DUAL SIM',
+    price: 1300,
+    count: 0
+  }
+];
