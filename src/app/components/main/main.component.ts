@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {products} from '../../mocks/products.mock';
 import {Product} from '../../model/product.model';
+import {CartService} from '../../services/cart-data.service';
 
 @Component({
   selector: 'app-main',
@@ -14,7 +15,15 @@ export class MainComponent{
   public catalog: any;
   public product: any;
   public productFromCart: any;
-  public listProductsInCart: Map<number, {}> = new Map<number, {}>();
+
+  @Output()
+  public listProductsInCart: Map<number, Product> = new Map<number, Product>();
+
+  @Output()
+  public onCounterChange: EventEmitter<number> = new EventEmitter<number>();
+
+  constructor(private cartService: CartService) {
+  }
 
   public getCatalogWithDiscount(generalCatalog: Product[], productsWithDiscount: string[]): any {
     return generalCatalog.map((product) => {
@@ -48,15 +57,21 @@ export class MainComponent{
       ++this.productFromCart.count;
       this.productFromCart.totalPrice = this.productFromCart.count * this.productFromCart.price;
       this.listProductsInCart.set(index, this.productFromCart);
-      console.log(this.listProductsInCart);
-
     } else {
       this.product = this.catalog[index];
       ++this.product.count;
       this.product.totalPrice = this.product.count * this.product.price;
       this.listProductsInCart.set(index, this.product);
-      console.log(this.listProductsInCart);
     }
+    this.cartService.listProductsInCart = this.listProductsInCart;
+
+    this.onCounterChange.emit(this.getCounter());
+  }
+
+  public getCounter(): number {
+    let counter: number = 0;
+    this.listProductsInCart.forEach((value: Product) => counter += value.count);
+    return counter;
   }
 
   public getProducts(): any[] {

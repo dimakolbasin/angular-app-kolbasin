@@ -6,8 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+  public cartCounter: number = 0;
   showModal = false;
-  public openCart(): void {
+  public toggleCart(): void {
     this.showModal = !this.showModal;
   }
+
+  public changeCartCounter(value: number): void {
+    this.cartCounter = value;
+  }
+
 }

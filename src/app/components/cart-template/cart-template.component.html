@@ -19,14 +19,18 @@
           </div>
         </div>
         <div class="list__product" id="list-product">
-
+          <ng-container *ngFor="let product of _listProductsInCart.values() ;trackBy: _trackBy">
+            <app-product-line-template [product]="product" (onProductChange)="changeProduct($event)"></app-product-line-template>
+          </ng-container>
         </div>
       </div>
     </div>
     <div class="modal__btn-container">
       <button class="modal__btn-buy">купить сейчас</button>
       <button class="modal__btn-drop">очистить корзину</button>
-      <button class="modal__btn-close">выйти</button>
+      <button class="modal__btn-close" (click)="closeCart()">выйти</button>
     </div>
   </div>
 </div>
+
+

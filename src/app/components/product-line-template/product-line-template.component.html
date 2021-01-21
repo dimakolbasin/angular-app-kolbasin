@@ -1,6 +1,8 @@
 <div class="items" id="items" >
-  <span id="name"></span>
-  <span id="count"></span>
-  <span id="price"></span>
-  <span id="drop-product"><button>x</button></span>
+  <span>{{product.name}}</span>
+  <span>
+    <app-counter-template [count]="product.count" (onCounterChange) = 'changeCount($event)'></app-counter-template>
+  </span>
+  <span>{{totalPrice}}</span>
+  <span><button>x</button></span>
 </div>

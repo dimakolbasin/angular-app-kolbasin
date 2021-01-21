@@ -10,7 +10,8 @@ import { MainComponent } from './components/main/main.component';
 import { CurrencyPipe } from './pipes/currency.pipe';
 import { CartTemplateComponent } from './components/cart-template/cart-template.component';
 import { ProductLineTemplateComponent } from './components/product-line-template/product-line-template.component';
-import { CounterTemplateComponent } from './components/counter-template/counter-template.component';
+import { CounterComponent } from './components/counter/counter.component';
+import {CartService} from './services/cart-data.service';
 
 
 @NgModule({
@@ -23,13 +24,13 @@ import { CounterTemplateComponent } from './components/counter-template/counter-
     CurrencyPipe,
     CartTemplateComponent,
     ProductLineTemplateComponent,
-    CounterTemplateComponent
+    CounterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
