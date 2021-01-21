@@ -7,92 +7,20 @@
       <div class="container__staff">
         <div class="staff">
 
-          <div class="staff__item">
+          <div *ngFor="let product of getProducts()" class="staff__item">
             <a href="#"><img class="staff__icon" src="../../../assets/img/img-phone/xsBlack.png" alt=""></a>
-            <h4 class="staff__title">iphone xr 128gb</h4>
-            <h3 class="staff__price">1300$</h3>
+            <h4 class="staff__title">{{product.name}}</h4>
+            <h3 class="staff__price">{{product.price | currency : currentCurrency}}</h3>
             <div class="staff__icon-trash">
-              <button data-id="0" class="staff__btn-add btn-plus">
+              <button (click)="addToCart(product.id)" class="staff__btn-add btn-plus">
                 <img class="staff__trash-img" src="../../../assets/img/icon/bascket1.png" alt="">
               </button>
-              <!--<button class="staff__btn-add btn-minus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket2.png" alt="">
-              </button>-->
-
             </div>
           </div>
 
-          <div class="staff__item">
-            <a href="#"><img class="staff__icon" src="../../../assets/img/img-phone/xsBlack.png" alt=""></a>
-            <h4 class="staff__title">iphone xr 256gb</h4>
-            <h3 class="staff__price">1100$</h3>
-            <div class="staff__icon-trash">
-              <button data-id="1" class="staff__btn-add btn-plus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket1.png" alt="">
-              </button>
-              <!--<button class="staff__btn-add btn-minus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket2.png" alt="">
-              </button>-->
-            </div>
-          </div>
-
-          <div class="staff__item">
-            <a href="#"><img class="staff__icon" src="../../../assets/img/img-phone/xsBlack.png" alt=""></a>
-            <h4 class="staff__title">iphone xr 128gb</h4>
-            <h3 class="staff__price">900$</h3>
-            <div class="staff__icon-trash">
-              <button data-id="2" class="staff__btn-add btn-plus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket1.png" alt="">
-              </button>
-              <!--<button class="staff__btn-add btn-minus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket2.png" alt="">
-              </button>-->
-            </div>
-          </div>
-
-          <div class="staff__item">
-            <a href="#"><img class="staff__icon" src="../../../assets/img/img-phone/xsBlack.png" alt=""></a>
-            <h4 class="staff__title">iphone xr 64gb</h4>
-            <h3 class="staff__price">799$</h3>
-            <div class="staff__icon-trash">
-              <button data-id="3" class="staff__btn-add btn-plus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket1.png" alt="">
-              </button>
-              <!--<button class="staff__btn-add btn-minus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket2.png" alt="">
-              </button>-->
-            </div>
-          </div>
-
-          <div class="staff__item">
-            <a href="#"><img class="staff__icon" src="../../../assets/img/img-phone/xsBlack.png" alt=""></a>
-            <h4 class="staff__title">iphone xr 64gb dual sim</h4>
-            <h3 class="staff__price">1000$</h3>
-            <div class="staff__icon-trash">
-              <button data-id="4" class="staff__btn-add btn-plus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket1.png" alt="">
-              </button>
-              <!--<button class="staff__btn-add btn-minus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket2.png" alt="">
-              </button>-->
-            </div>
-          </div>
-
-          <div class="staff__item">
-            <a href=""><img class="staff__icon" src="../../../assets/img/img-phone/xsBlack.png" alt=""></a>
-            <h4 class="staff__title">iphone xr 128gb dual sim</h4>
-            <h3 class="staff__price">1300$</h3>
-            <div class="staff__icon-trash">
-              <button data-id="5" class="staff__btn-add btn-plus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket1.png" alt="">
-              </button>
-              <!--<button class="staff__btn-add btn-minus">
-                <img class="staff__trash-img" src="../../../assets/img/icon/bascket2.png" alt="">
-              </button>-->
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </main>
+

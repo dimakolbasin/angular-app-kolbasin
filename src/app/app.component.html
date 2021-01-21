@@ -2,4 +2,10 @@
 <app-navigation></app-navigation>
 <app-main></app-main>
 <app-footer></app-footer>
+<app-cart-template *ngIf="showModal">
+  <app-product-line-template>
+    <app-counter-template>
 
+    </app-counter-template>
+  </app-product-line-template>
+</app-cart-template>
