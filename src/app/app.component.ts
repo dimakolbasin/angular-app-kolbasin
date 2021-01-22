@@ -16,4 +16,7 @@ export class AppComponent {
     this.cartCounter = value;
   }
 
+  public changeCounter(count: number): void {
+    this.cartCounter = this.cartCounter - count;
+  }
 }

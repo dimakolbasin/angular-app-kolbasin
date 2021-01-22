@@ -2,6 +2,4 @@
 <app-navigation></app-navigation>
 <app-main (onCounterChange)="changeCartCounter($event)"></app-main>
 <app-footer></app-footer>
-<app-cart-template *ngIf="showModal" (onCloseCart)="toggleCart()">
-
-</app-cart-template>
+<app-cart *ngIf="showModal" (onCloseCart)="toggleCart()" (onRemoveProduct)="changeCounter($event)"></app-cart>

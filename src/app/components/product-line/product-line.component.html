@@ -4,5 +4,5 @@
     <app-counter-template [count]="product.count" (onCounterChange) = 'changeCount($event)'></app-counter-template>
   </span>
   <span>{{totalPrice}}</span>
-  <span><button>x</button></span>
+  <span><button (click)="deleteProduct(product.id)">x</button></span>
 </div>

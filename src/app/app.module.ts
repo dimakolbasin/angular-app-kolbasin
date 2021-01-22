@@ -8,8 +8,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { CurrencyPipe } from './pipes/currency.pipe';
-import { CartTemplateComponent } from './components/cart-template/cart-template.component';
-import { ProductLineTemplateComponent } from './components/product-line-template/product-line-template.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ProductLineComponent } from './components/product-line/product-line.component';
 import { CounterComponent } from './components/counter/counter.component';
 import {CartService} from './services/cart-data.service';
 
@@ -22,8 +22,8 @@ import {CartService} from './services/cart-data.service';
     FooterComponent,
     MainComponent,
     CurrencyPipe,
-    CartTemplateComponent,
-    ProductLineTemplateComponent,
+    CartComponent,
+    ProductLineComponent,
     CounterComponent
   ],
   imports: [

@@ -17,9 +17,6 @@ export class MainComponent{
   public productFromCart: any;
 
   @Output()
-  public listProductsInCart: Map<number, Product> = new Map<number, Product>();
-
-  @Output()
   public onCounterChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private cartService: CartService) {
@@ -39,7 +36,7 @@ export class MainComponent{
     return (price: number) => {
       return price - price * discount;
     };
-  };
+  }
 
   public transformPriceByDiscount(product: any): Product[] {
     return {
@@ -52,25 +49,24 @@ export class MainComponent{
 
     this.catalog = this.getCatalogWithDiscount(this.generalCatalog, this.productsWithDiscount);
 
-    if (this.listProductsInCart.has(index)) {
-      this.productFromCart = this.listProductsInCart.get(index);
+    if (this.cartService.listProductsInCart.has(index)) {
+      this.productFromCart = this.cartService.listProductsInCart.get(index);
       ++this.productFromCart.count;
       this.productFromCart.totalPrice = this.productFromCart.count * this.productFromCart.price;
-      this.listProductsInCart.set(index, this.productFromCart);
+      this.cartService.listProductsInCart.set(index, this.productFromCart);
     } else {
       this.product = this.catalog[index];
       ++this.product.count;
       this.product.totalPrice = this.product.count * this.product.price;
-      this.listProductsInCart.set(index, this.product);
+      this.cartService.listProductsInCart.set(index, this.product);
     }
-    this.cartService.listProductsInCart = this.listProductsInCart;
 
     this.onCounterChange.emit(this.getCounter());
   }
 
   public getCounter(): number {
     let counter: number = 0;
-    this.listProductsInCart.forEach((value: Product) => counter += value.count);
+    this.cartService.listProductsInCart.forEach((value: Product) => counter += value.count);
     return counter;
   }
 
