@@ -1,5 +1,7 @@
-<app-header [cartCounter]="cartCounter" (onOpenCart)="toggleCart()"></app-header>
+<app-header (onOpenCart)="toggleCart()"></app-header>
 <app-navigation></app-navigation>
-<app-main (onCounterChange)="changeCartCounter($event)"></app-main>
+<router-outlet>
+
+</router-outlet>
 <app-footer></app-footer>
 <app-cart *ngIf="showModal" (onCloseCart)="toggleCart()" (onRemoveProduct)="changeCounter($event)"></app-cart>

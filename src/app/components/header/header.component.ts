@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CartService} from '../../services/cart-data.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,10 @@ export class HeaderComponent implements OnInit {
   public onOpenCart: EventEmitter<void> = new EventEmitter<void>();
 
 
-  @Input()
-  public cartCounter: number = 0;
+  public cartCounter: number = this.cartService.getCartCount();
+
+  constructor(private cartService: CartService) {
+  }
 
   ngOnInit(): void {
   }

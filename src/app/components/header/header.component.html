@@ -16,13 +16,13 @@
         </div>
 
         <div class="header__btn open-cart" (click)="openCart()">
-          <a class="icon" href="#"><img class="img-nav" src="../../../assets/img/icon/basket.png" alt="basket"></a>
+          <a class="icon"><img class="img-nav" src="../../../assets/img/icon/basket.png" alt="basket"></a>
         </div>
         <div class="body-counter" id="body-counter">
-          {{cartCounter ? cartCounter : ""}}
+          {{this.cartService.getCartCount() ? this.cartService.getCartCount() : ""}}
         </div>
         <div class="header__btn btn_hide">
-          <a class="icon" href="#"><img class="img-nav" src="../../../assets/img/icon/logout.png" alt="logout"></a>
+          <a class="icon" href="#" routerLink="/user-profile"><img class="img-nav" src="../../../assets/img/icon/logout.png" alt="logout"></a>
         </div>
 
         <div class="header__btn burger-nav">

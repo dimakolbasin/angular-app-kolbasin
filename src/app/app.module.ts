@@ -11,7 +11,11 @@ import { CurrencyPipe } from './pipes/currency.pipe';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductLineComponent } from './components/product-line/product-line.component';
 import { CounterComponent } from './components/counter/counter.component';
-import {CartService} from './services/cart-data.service';
+import { CartService } from './services/cart-data.service';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DeviceComponent } from './components/device/device.component';
+import { MockDataService } from './services/mock-data.service';
 
 
 @NgModule({
@@ -24,13 +28,16 @@ import {CartService} from './services/cart-data.service';
     CurrencyPipe,
     CartComponent,
     ProductLineComponent,
-    CounterComponent
+    CounterComponent,
+    UserProfileComponent,
+    PageNotFoundComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [CartService],
+  providers: [CartService, MockDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,14 +1,15 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {products} from '../../mocks/products.mock';
 import {Product} from '../../model/product.model';
 import {CartService} from '../../services/cart-data.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.less']
 })
-export class MainComponent{
+export class MainComponent implements OnInit{
   public currentCurrency = '$';
   public generalCatalog: Product[] = [...products];
   public productsWithDiscount: string[] = ['IPHONE XR 512GB', 'IPHONE XR 256GB', 'IPHONE XR 128GB'];
@@ -16,11 +17,22 @@ export class MainComponent{
   public product: any;
   public productFromCart: any;
 
+
   @Output()
   public onCounterChange: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,
+              private route: ActivatedRoute) {
   }
+
+  ngOnInit(): void {
+  }
+
+  public getProducts(): any[] {
+    return products;
+  }
+
+
 
   public getCatalogWithDiscount(generalCatalog: Product[], productsWithDiscount: string[]): any {
     return generalCatalog.map((product) => {
@@ -61,7 +73,7 @@ export class MainComponent{
       this.cartService.listProductsInCart.set(index, this.product);
     }
 
-    this.onCounterChange.emit(this.getCounter());
+    this.cartService.setCartCount(this.getCounter());
   }
 
   public getCounter(): number {
@@ -70,7 +82,4 @@ export class MainComponent{
     return counter;
   }
 
-  public getProducts(): any[] {
-    return products;
-  }
 }

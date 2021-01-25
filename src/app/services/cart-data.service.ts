@@ -1,21 +1,22 @@
 import {Injectable} from '@angular/core';
 import {Product} from '../model/product.model';
 
+
 @Injectable()
 export class CartService {
 
   private _listProductsInCart: Map<number, Product> = new Map<number, Product>();
 
-  private _cartCount = 0;
+  private _cartCount: number = 0;
 
   constructor() {
   }
 
-  setCartCount(cartCount: number): void {
+  public setCartCount(cartCount: number): void {
     this._cartCount = cartCount;
   }
 
-  getCartCount(): number {
+  public getCartCount(): number {
     return this._cartCount;
   }
 
@@ -30,4 +31,5 @@ export class CartService {
       this._listProductsInCart.set(item.id, item);
     });
   }
+
 }
