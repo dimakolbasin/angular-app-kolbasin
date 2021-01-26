@@ -4,7 +4,7 @@
       <div *ngFor="let product of productList" class="staff">
 
         <div class="staff__item">
-          <a routerLink="/products/"><img class="staff__icon" src="../../../assets/img/img-phone/xsBlack.png" alt=""></a>
+          <a routerLink="/products/"><img class="staff__icon" src="{{product.url}}" alt=""></a>
         </div>
         <h1 class="staff__price">{{product.name}}</h1>
 

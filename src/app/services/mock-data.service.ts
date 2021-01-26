@@ -9,11 +9,7 @@ export class MockDataService {
   constructor() {
   }
 
-  /*getCurrentCategory(): Product | undefined {
-    return this.currentProduct;
-  }*/
-
-  setCurrentCategory(id: number): any[] {
+  getCurrentProduct(id: number): Product[] {
     return [products[id]];
   }
 

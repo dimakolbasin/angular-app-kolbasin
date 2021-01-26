@@ -12,7 +12,7 @@ import {Product} from '../../model/product.model';
 })
 export class DeviceComponent implements OnInit {
 
-  public productList: any[] = [];
+  public productList: Product[] = [];
 
   constructor(private productService: MockDataService,
               private route: ActivatedRoute) { }
@@ -21,7 +21,7 @@ export class DeviceComponent implements OnInit {
     this.route.params
       .subscribe((params) => {
         const id = params?.id || '';
-        this.productList = [...this.productService.setCurrentCategory(id)];
+        this.productList = [...this.productService.getCurrentProduct(id)];
       });
   }
 
