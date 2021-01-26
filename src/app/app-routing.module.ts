@@ -4,11 +4,12 @@ import {UserProfileComponent} from './components/user-profile/user-profile.compo
 import {MainComponent} from './components/main/main.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {DeviceComponent} from './components/device/device.component';
+import {LocalStorageGuard} from './guards/local-storage.guard';
 
 
 
 const routes: Routes = [
-  {path: 'user-profile', component: UserProfileComponent},
+  {path: 'user-profile', component: UserProfileComponent, canActivate: [LocalStorageGuard]},
   {path: 'products', component: MainComponent},
   {path: '', redirectTo: 'products', pathMatch: 'full'},
   {path: 'products/:id', component: DeviceComponent},

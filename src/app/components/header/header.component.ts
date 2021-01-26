@@ -12,12 +12,18 @@ export class HeaderComponent implements OnInit {
   public onOpenCart: EventEmitter<void> = new EventEmitter<void>();
 
 
-  public cartCounter: number = this.cartService.getCartCount();
+  public cartCounter: number = 0;
 
   constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
+
+  }
+
+  public getCounter(): number {
+    this.cartCounter = this.cartService.getCartCount();
+    return this.cartCounter;
   }
 
   public openCart(): void {

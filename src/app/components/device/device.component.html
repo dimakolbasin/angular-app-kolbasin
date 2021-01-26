@@ -1,19 +1,14 @@
 <div class="container container-main">
   <div class="container-box">
     <div class="container__staff">
-      <div class="staff">
+      <div *ngFor="let product of productList" class="staff">
 
-        <div *ngFor="let product of productList" class="staff__item">
+        <div class="staff__item">
           <a routerLink="/products/"><img class="staff__icon" src="../../../assets/img/img-phone/xsBlack.png" alt=""></a>
-          <h4 class="staff__title">{{product.name}}</h4>
-          <h3 class="staff__price">{{product.price}} $</h3>
-          <div class="staff__icon-trash">
-            <button class="staff__btn-add btn-plus">
-              <a class="staff__trash-img">add to cart</a>
-            </button>
-          </div>
         </div>
+        <h1 class="staff__price">{{product.name}}</h1>
 
+        <h3>{{product.description}}</h3>
       </div>
     </div>
   </div>
