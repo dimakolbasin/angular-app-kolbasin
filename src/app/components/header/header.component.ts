@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CartService} from '../../services/cart-data.service';
+import {Product} from '../../model/product.model';
 
 @Component({
   selector: 'app-header',
@@ -18,13 +19,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.cartService.cartCount$.subscribe((count: number) => {
+      this.cartCounter = count;
+    });
   }
 
-  public getCounter(): number {
+  /*public getCounter(): number {
     this.cartCounter = this.cartService.getCartCount();
     return this.cartCounter;
-  }
+  }*/
 
   public openCart(): void {
     this.onOpenCart.emit();

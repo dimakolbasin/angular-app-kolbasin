@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Product} from '../model/product.model';
+import {Subject} from 'rxjs';
 
 
 @Injectable()
@@ -8,6 +9,8 @@ export class CartService {
   private _listProductsInCart: Map<number, Product> = new Map<number, Product>();
 
   private _cartCount: number = 0;
+
+  public cartCount$: Subject<number> = new Subject<number>();
 
   constructor() {
   }

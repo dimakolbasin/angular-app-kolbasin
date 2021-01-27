@@ -33,6 +33,11 @@ export class CartComponent implements OnInit {
 
   changeProduct(product: Product): void {
     this._listProductsInCart.set(product.id, product);
+    let count: number = 0;
+    this._listProductsInCart.forEach(item => {
+      count += item.count;
+    });
+    this.cartService.cartCount$.next(count);
   }
 
   closeCart(): void {

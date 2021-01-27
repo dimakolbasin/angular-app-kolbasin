@@ -1,38 +1,40 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {products} from '../../mocks/products.mock';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {Product} from '../../model/product.model';
 import {CartService} from '../../services/cart-data.service';
-import {ActivatedRoute} from '@angular/router';
+import {ProductDataService} from '../../services/product-data.service';
+import {Observable, Subscription} from 'rxjs';
+
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.less']
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit, OnDestroy{
   public currentCurrency = '$';
-  public generalCatalog: Product[] = [...products];
+  public generalCatalog: Product[] = [];
   public productsWithDiscount: string[] = ['IPHONE XR 512GB', 'IPHONE XR 256GB', 'IPHONE XR 128GB'];
   public catalog: any;
   public product: any;
   public productFromCart: any;
-
+  private subscription: Subscription = new Subscription();
 
   @Output()
   public onCounterChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private cartService: CartService,
-              private route: ActivatedRoute) {
+              private productService: ProductDataService) {
   }
 
   ngOnInit(): void {
+    this.subscription = this.productService.getProducts().subscribe((products: Product[]) => {
+      this.generalCatalog = products;
+    });
   }
 
-  public getProducts(): any[] {
-    return products;
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
-
-
 
   public getCatalogWithDiscount(generalCatalog: Product[], productsWithDiscount: string[]): any {
     return generalCatalog.map((product) => {
@@ -73,7 +75,8 @@ export class MainComponent implements OnInit{
       this.cartService.listProductsInCart.set(index, this.product);
     }
 
-    this.cartService.setCartCount(this.getCounter());
+    /*this.cartService.setCartCount(this.getCounter());*/
+    this.cartService.cartCount$.next(this.getCounter());
   }
 
   public getCounter(): number {

@@ -15,7 +15,9 @@ import { CartService } from './services/cart-data.service';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DeviceComponent } from './components/device/device.component';
-import { MockDataService } from './services/mock-data.service';
+import { ProductDataService } from './services/product-data.service';
+import {HttpClientModule} from '@angular/common/http';
+
 
 
 @NgModule({
@@ -35,9 +37,10 @@ import { MockDataService } from './services/mock-data.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [CartService, MockDataService],
+  providers: [CartService, ProductDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

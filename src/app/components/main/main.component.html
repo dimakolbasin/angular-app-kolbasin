@@ -7,7 +7,7 @@
       <div class="container__staff">
         <div class="staff">
 
-          <div *ngFor="let product of getProducts()" class="staff__item">
+          <div *ngFor="let product of generalCatalog" class="staff__item">
             <a routerLink="/products/{{product.id}}"><img class="staff__icon" src="../../../assets/img/img-phone/xsBlack.png" alt=""></a>
             <h4 class="staff__title">{{product.name}}</h4>
             <h3 class="staff__price">{{product.price | currency : currentCurrency}}</h3>

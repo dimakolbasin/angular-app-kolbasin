@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {MockDataService} from '../../services/mock-data.service';
+import {ProductDataService} from '../../services/product-data.service';
 import {Product} from '../../model/product.model';
 
 
@@ -14,7 +14,7 @@ export class DeviceComponent implements OnInit {
 
   public productList: Product[] = [];
 
-  constructor(private productService: MockDataService,
+  constructor(private productService: ProductDataService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
