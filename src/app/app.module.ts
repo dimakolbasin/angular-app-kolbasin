@@ -17,6 +17,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { DeviceComponent } from './components/device/device.component';
 import { ProductDataService } from './services/product-data.service';
 import {HttpClientModule} from '@angular/common/http';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -33,12 +35,15 @@ import {HttpClientModule} from '@angular/common/http';
     CounterComponent,
     UserProfileComponent,
     PageNotFoundComponent,
-    DeviceComponent
+    DeviceComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [CartService, ProductDataService],
   bootstrap: [AppComponent]

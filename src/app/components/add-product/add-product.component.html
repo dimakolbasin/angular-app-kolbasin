@@ -1,0 +1,26 @@
+<div class="container">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Angular Forms</h1>
+
+    <div class="form-control">
+      <label>name</label>
+      <input type="text" placeholder="name" formControlName="name">
+      <div class="validation"></div>
+    </div>
+
+    <div class="form-control">
+      <label>price</label>
+      <input type="text" placeholder="price" formControlName="price">
+      <div class="validation"></div>
+    </div>
+
+    <div class="form-control">
+      <label>description</label>
+      <input type="text" placeholder="description" formControlName="description">
+      <div class="validation"></div>
+    </div>
+
+
+    <button class="btn" type="submit" [disabled]="form?.invalid">Отправить</button>
+  </form>
+</div>

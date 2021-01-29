@@ -5,12 +5,14 @@ import {MainComponent} from './components/main/main.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {DeviceComponent} from './components/device/device.component';
 import {LocalStorageGuard} from './guards/local-storage.guard';
+import {AddProductComponent} from './components/add-product/add-product.component';
 
 
 
 const routes: Routes = [
-  {path: 'user-profile', component: UserProfileComponent, canActivate: [LocalStorageGuard]},
+  {path: 'user-profile', component: UserProfileComponent},
   {path: 'products', component: MainComponent},
+  {path: 'admin/add', component: AddProductComponent},
   {path: '', redirectTo: 'products', pathMatch: 'full'},
   {path: 'products/:id', component: DeviceComponent},
   {path: '**', component: PageNotFoundComponent}
