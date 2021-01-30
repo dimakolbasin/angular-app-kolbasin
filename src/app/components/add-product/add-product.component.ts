@@ -4,6 +4,7 @@ import {ProductDataService} from '../../services/product-data.service';
 import {Subscription} from 'rxjs';
 import {Product} from '../../model/product.model';
 import {products} from '../../mocks/products.mock';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -19,13 +20,14 @@ export class AddProductComponent implements OnInit {
   public formData: any;
 
 
-  constructor(private productService: ProductDataService) {
+  constructor(private productService: ProductDataService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]),
-      price: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      price: new FormControl('', [Validators.required, Validators.min(0), Validators.minLength(3)]),
       description: new FormControl('', [Validators.required, Validators.minLength(3)])
     });
 
@@ -45,5 +47,7 @@ export class AddProductComponent implements OnInit {
     this.subscription = this.productService.postProduct(this.formData).subscribe((product: Product[]) => {
         console.log('продукт добавлен');
       });
+    this.router.navigate(['/products']).then(r => console.log(''));
   }
+
 }

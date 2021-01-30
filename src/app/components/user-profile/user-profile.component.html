@@ -1,50 +1,19 @@
-<div class="ui container app-container-user-profile">
-  <form [formGroup]=userForm class="ui form">
-    <div class="field">
-      <label>Reactive First Name</label>
-      <input formControlName="firstName"
-             name="first-name"
-             placeholder="First Name"
-             required
-             type="text">
+<div class="container">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Angular Forms</h1>
 
-      <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)"
-           class="error">
-        <div *ngIf="firstName?.errors?.required"> First Name is required</div>
-        <div *ngIf="firstName?.errors?.minlength"> First Name must be at least 3 characters long</div>
-      </div>
-
+    <div class="form-control">
+      <label>name</label>
+      <input type="text" placeholder="name" formControlName="name">
+      <div class="validation"></div>
     </div>
-    <div class="field">
-      <label>Reactive Last Name</label>
-      <input formControlName="lastName"
-             name="last-name"
-             placeholder="Last Name"
-             required
-             type="text">
 
-      <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)"
-           class="error">
-        <div *ngIf="lastName?.errors?.required"> Last Name is required</div>
-        <div *ngIf="lastName?.errors?.minlength"> Last Name must be at least 3 characters long</div>
-      </div>
-
+    <div class="form-control">
+      <label>password</label>
+      <input type="password" placeholder="password" formControlName="password">
+      <div class="validation"></div>
     </div>
-    <div class="field">
-      <label>Reactive Email</label>
-      <input formControlName="email"
-             name="email"
-             placeholder="Email"
-             required
-             type="email">
 
-      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"
-           class="error">
-        <div *ngIf="email?.errors?.required"> Email is required</div>
-        <div *ngIf="email?.errors?.pattern"> Email must be correct (email@email.com)</div>
-      </div>
-
-    </div>
-    <button [disabled]="userForm.invalid" class="ui button" type="submit">Submit</button>
+    <button class="btn" type="submit" [disabled]="form?.invalid">Отправить</button>
   </form>
 </div>

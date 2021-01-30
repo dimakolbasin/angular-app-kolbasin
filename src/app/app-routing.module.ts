@@ -12,7 +12,7 @@ import {AddProductComponent} from './components/add-product/add-product.componen
 const routes: Routes = [
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'products', component: MainComponent},
-  {path: 'admin/add', component: AddProductComponent},
+  {path: 'admin/add', component: AddProductComponent, canActivate: [LocalStorageGuard]},
   {path: '', redirectTo: 'products', pathMatch: 'full'},
   {path: 'products/:id', component: DeviceComponent},
   {path: '**', component: PageNotFoundComponent}
