@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductDataService} from '../../services/product-data.service';
 import {Subscription} from 'rxjs';
@@ -31,6 +31,7 @@ export class AddProductComponent implements OnInit {
       description: new FormControl('', [Validators.required, Validators.minLength(3)])
     });
 
+
     this.subscription = this.productService.getProducts().subscribe((products: Product[]) => {
       this.dataForm = products;
     });
@@ -49,5 +50,6 @@ export class AddProductComponent implements OnInit {
       });
     this.router.navigate(['/products']).then(r => console.log(''));
   }
+
 
 }
