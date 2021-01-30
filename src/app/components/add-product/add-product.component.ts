@@ -4,6 +4,7 @@ import {ProductDataService} from '../../services/product-data.service';
 import {Subscription} from 'rxjs';
 import {Product} from '../../model/product.model';
 import {Router} from '@angular/router';
+import {formatNumber} from '@angular/common';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]),
-      price: new FormControl('', [Validators.required, Validators.min(0), Validators.minLength(3)]),
+      price: new FormControl('', [Validators.required, Validators.pattern(/[1-9]/), Validators.min(0), Validators.minLength(3)]),
       description: new FormControl('', [Validators.required, Validators.minLength(3)])
     });
 
