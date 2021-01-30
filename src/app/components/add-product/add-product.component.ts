@@ -3,7 +3,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductDataService} from '../../services/product-data.service';
 import {Subscription} from 'rxjs';
 import {Product} from '../../model/product.model';
-import {products} from '../../mocks/products.mock';
 import {Router} from '@angular/router';
 
 
@@ -12,10 +11,10 @@ import {Router} from '@angular/router';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.less']
 })
-export class AddProductComponent implements OnInit {
+export class AddProductComponent implements OnInit, OnDestroy {
   form: FormGroup = new FormGroup({});
   private subscription: Subscription = new Subscription();
-  public dataForm: any;
+  public dataForm: Product[] = [];
   public formData: any;
 
 
@@ -32,6 +31,7 @@ export class AddProductComponent implements OnInit {
     });
 
 
+    // tslint:disable-next-line:no-shadowed-variable
     this.subscription = this.productService.getProducts().subscribe((products: Product[]) => {
       this.dataForm = products;
     });
@@ -41,7 +41,7 @@ export class AddProductComponent implements OnInit {
 
   submit(): void {
     this.formData = {...this.form.value};
-    this.formData.id = products.length;
+    this.formData.id = this.dataForm.length;
     this.formData.count = 0;
     this.formData.url = "../../../assets/img/img-phone/xsBlack.png";
 
@@ -49,6 +49,9 @@ export class AddProductComponent implements OnInit {
         console.log('продукт добавлен');
       });
     this.router.navigate(['/products']).then(r => console.log(''));
+  }
+
+  ngOnDestroy(): void {
   }
 
 
