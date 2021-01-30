@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Product} from '../model/product.model';
 import {products} from '../mocks/products.mock';
 import {HttpClient} from '@angular/common/http';
-import {combineLatest, Observable, ReplaySubject} from 'rxjs';
-import { delay, map, take, tap } from 'rxjs/operators';
-
+import {Observable} from 'rxjs';
 
 
 @Injectable()

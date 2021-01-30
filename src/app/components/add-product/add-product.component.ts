@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductDataService} from '../../services/product-data.service';
 import {Subscription} from 'rxjs';
@@ -13,8 +13,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./add-product.component.less']
 })
 export class AddProductComponent implements OnInit {
-  // @ts-ignore
-  form: FormGroup;
+  form: FormGroup = new FormGroup({});
   private subscription: Subscription = new Subscription();
   public dataForm: any;
   public formData: any;
@@ -25,6 +24,7 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]),
       price: new FormControl('', [Validators.required, Validators.min(0), Validators.minLength(3)]),

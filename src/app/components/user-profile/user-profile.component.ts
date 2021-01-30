@@ -9,8 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./user-profile.component.less']
 })
 export class UserProfileComponent implements OnInit {
-  // @ts-ignore
-  form: FormGroup;
+  form: FormGroup = new FormGroup({});
 
   constructor(private router: Router) {
   }
